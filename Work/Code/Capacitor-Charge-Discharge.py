@@ -1,3 +1,5 @@
+#Line 79 address must be changed
+
 import time
 import spidev
 from gpiozero import OutputDevice
@@ -74,7 +76,7 @@ except KeyboardInterrupt:
     plt.grid(True)
     plt.legend()
     plt.tight_layout()
-    plt.savefig("/home/Zeiad/Desktop/capacitor_plot.png")
+    plt.savefig("/home/Zeiad/Desktop/capacitor_plot.png")  # Change this depensding on the location of your folder you can write "ls" in the terminal and find out
     print("✅ Plot saved to your Desktop as capacitor_plot3.png")
 
 finally:

@@ -1,0 +1,5 @@
+sudo apt update
+sudo apt install python3-pip
+sudo apt install python3-spidev
+sudo apt install python3-gpiozero
+sudo apt install python3-matplotlib

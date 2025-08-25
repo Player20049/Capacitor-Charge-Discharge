@@ -2,7 +2,7 @@
 
 This project reads and visualizes the charging and discharging curves of a capacitor using a Raspberry Pi, an MCP3008 ADC, and GPIO-controlled discharge logic.
 
-<p align="center"> <img src="Capacitor_Charge_Discharge_Visual_Plot.png" width="600"/> </p>
+<p align="center"> <img src="Work/Capacitor_Charge_Discharge_Visual_Plot.png" width="600"/> </p>
 📦 Components Used
 Component	Purpose
 Raspberry Pi (any model)	Main controller
@@ -13,7 +13,7 @@ Resistors	Limiting current to base/circuit
 GPIO Pin (e.g., GPIO 18)	Discharge switching
 Breadboard & Wires	Circuit assembly
 🔧 Circuit Schematic
-<p align="center"> <img src="Capacitor_Charge_Discharge_Schematic.png" width="650"/> </p>
+<p align="center"> <img src="Work/Capacitor_Charge_Discharge_Schematic.png" width="650"/> </p>
 🚀 Features
 
 📊 Real-time voltage sampling via MCP3008

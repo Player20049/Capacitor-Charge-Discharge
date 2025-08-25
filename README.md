@@ -1,104 +1,65 @@
-🧠 Capacitor Charge & Discharge Monitor (Raspberry Pi)
+# ⚡ Capacitor Charge & Discharge Curve Visualization with Raspberry Pi
 
-This project reads and visualizes the charging and discharging curves of a capacitor using a Raspberry Pi, an MCP3008 ADC, and GPIO-controlled discharge logic.
+A Raspberry Pi-powered system that charges and discharges a capacitor using GPIO-controlled circuitry and plots its voltage over time. This project demonstrates RC time constant behavior using live analog data read via the MCP3008 ADC and plotted using Python.
 
-<p align="center"> <img src="Work/Capacitor_Charge_Discharge_Visual_Plot.png" width="600"/> </p>
-📦 Components Used
-Component	Purpose
-Raspberry Pi (any model)	Main controller
-MCP3008	10-bit ADC to read analog voltages
-Capacitor (e.g., 1000μF)	Component under test
-NPN Transistor	Discharge control (via GPIO)
-Resistors	Limiting current to base/circuit
-GPIO Pin (e.g., GPIO 18)	Discharge switching
-Breadboard & Wires	Circuit assembly
-🔧 Circuit Schematic
-<p align="center"> <img src="Work/Capacitor_Charge_Discharge_Schematic.png" width="650"/> </p>
-🚀 Features
+---
 
-📊 Real-time voltage sampling via MCP3008
+## 📌 Overview
 
-⚡ Controlled discharge using GPIO & NPN transistor
+This mini project was created as part of my hands-on exploration of electronics fundamentals, particularly how capacitors behave during charge and discharge cycles. Using a transistor controlled by a GPIO pin and an MCP3008 ADC, the system logs real-time voltage across a capacitor and visualizes the classic exponential curves.
 
-📈 Saves and plots voltage vs time
+---
 
-🔁 Continuous cycle logging
+## 🚀 Project Objectives
 
-💾 Automatically saves plot to desktop
+- ✅ Charge a capacitor through a resistor until it reaches the supply voltage  
+- ✅ Discharge the capacitor rapidly via a GPIO-controlled transistor  
+- ✅ Continuously log voltage values via MCP3008 (SPI ADC)  
+- ✅ Plot the capacitor voltage vs. time using Matplotlib  
+- ✅ Demonstrate exponential RC charge and discharge behavior  
+- 📊 Store schematic and visual plot images for future reference  
 
-🛠️ Installation
-🔹 1. Enable SPI on your Raspberry Pi
-sudo raspi-config
-# Navigate to Interface Options -> SPI -> Enable
+---
+
+## 📸 Hardware Used
+
+| Component                     | Description                                  |
+|----------------------------   |--------------------------------------------- |
+| Raspberry Pi (3/4/5)          | Controls GPIO and reads analog values via SPI|
+| MCP3008 ADC                   | Converts analog capacitor voltage to digital |
+| 1000µF Capacitor              | Stores and discharges energy                 |
+| NPN Transistor (e.g., 2N2222) | Enables GPIO-controlled discharge            |
+| Resistors (1kΩ, 10kΩ)         | Controls base current and charge rate        |
+| Breadboard & Wires            | For prototyping the circuit                  |
 
 
-Then reboot.
+---
 
-🔹 2. Install System Dependencies
+---
+## Final Schematic
+
+<img src="Work/Capacitor_Charge_Discharge_Schematic.png" width="600">
+  
+## Capacitor Visual Plot
+<img src="Work/Capacitor_Charge_Discharge_Visual_Plot.png" width="600">
+---
+
+## 🧠 Technologies Used
+
+- Python 3  
+- [`gpiozero`](https://gpiozero.readthedocs.io/) for GPIO control  
+- [`spidev`](https://pypi.org/project/spidev/) for SPI ADC interface  
+- [`matplotlib`](https://matplotlib.org/) for data visualization  
+- Fritzing for schematic design  
+
+---
+
+## 📦 Installation (on Raspberry Pi OS)
+
+Install dependencies using APT and pip:
+
+```bash
 sudo apt update
-sudo apt install python3-pip
-sudo apt install python3-spidev
-sudo apt install python3-gpiozero
-sudo apt install python3-matplotlib
-
-
-Alternatively, install via pip:
-
+sudo apt install python3-pip python3-spidev python3-gpiozero -y
 pip3 install matplotlib
 
-📄 Python Script Overview
-import time
-import spidev
-from gpiozero import OutputDevice
-import matplotlib.pyplot as plt
-
-
-spidev: Communicates with MCP3008 ADC
-
-gpiozero: Activates transistor to discharge capacitor
-
-matplotlib: Plots the charge/discharge curves
-
-📂 Project Structure
-Capacitor-Charge-Discharge/
-│
-├── capacitor_logger.py               # Main Python script
-├── Capacitor_Charge_Discharge_Schematic.png  # Schematic image
-├── Capacitor_Charge_Discharge_Visual_Plot.png  # Output plot sample
-├── README.md                         # This file
-└── requirements.txt                  # Minimal pip dependencies
-
-🧪 Example Output
-(Charging) Time: 3.59s | Voltage: 3.17 V
-(Charging) Time: 3.60s | Voltage: 3.20 V
-(Discharging) Time: 3.61s | Voltage: 0.01 V
-...
-✅ Plot saved to your Desktop as capacitor_plot5.png
-
-⚠️ Known Limitations
-
-Discharge may seem abrupt if:
-
-The base resistor is too small (saturation)
-
-The capacitor value is small (fast decay)
-
-Discharge resistor path is too low in resistance
-
-Real-world factors like temperature and noise may affect readings
-
-🧠 Ideas for Expansion
-
-Add OLED/serial display for live readings
-
-Add capacitor value detection
-
-Detect ESR or leakage
-
-Log data to a CSV file
-
-Compare different capacitor types (electrolytic vs ceramic)
-
-📜 License
-
-MIT License. Feel free to build on this work with attribution.
